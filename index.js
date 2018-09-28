@@ -1,5 +1,5 @@
 const startButton = document.getElementById('start-button');
-const camera = document.querySelector('a-camera'); 
+const camera = document.getElementById("camera-holder");
 const elevatorDoor = document.getElementById('sliding-door');
 const plank = document.getElementById('plank');
 const elevatorDing = document.getElementById('elevator-ding');
@@ -39,4 +39,4 @@ camera.addEventListener('animationend', function() {
         }, 2500);
         hasDied = true;
     }
-})
+});

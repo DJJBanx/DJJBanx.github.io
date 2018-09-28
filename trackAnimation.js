@@ -46,7 +46,7 @@ AFRAME.registerComponent("trackanimation", {
         this.rots.push(this.data.rotC);
         this.rots.push(this.data.rotD);
 
-        console.log(this.points);
+        // console.log(this.points);
         let adjustableTimeConstant = 1000;
 
         helperVec.copy(this.points[0]).sub(this.points[1]);
@@ -100,7 +100,7 @@ AFRAME.registerComponent("trackanimation", {
         let animr = [animr1, animr2, animr3, animr4];
 
         if (this.time == null) this.time = Math.floor(7 * this.time12 / 8);
-        console.log(this.animTimeFrame);
+        // console.log(this.animTimeFrame);
 
         anim4.setAttribute("to", vectorToString(this.points[0]));
         anim1.setAttribute("from", vectorToString(this.points[0]));
@@ -136,13 +136,12 @@ AFRAME.registerComponent("trackanimation", {
 
         anims.forEach(function (element) {
             element.setAttribute("attribute", "position");
+            element.setAttribute("easing", "linear");
         });
         animr.forEach(function (element) {
             element.setAttribute("attribute", "rotation");
             element.setAttribute("dur", "300");
         });
-
-        console.log(anims);
 
         this.el.appendChild(anim1);
         this.el.appendChild(anim2);
@@ -196,15 +195,15 @@ AFRAME.registerComponent("trackanimation", {
         switch (this.animTimeFrame[0]) {
             case "12":
                 if (compareVectors(pos, this.points[0])) {
-                    console.log("arrived at a");
-                    console.log("comparing r to r1");
+                    // console.log("arrived at a");
+                    // console.log("comparing r to r1");
                     if (compareVectors(rot, this.rots[0])) {
-                        console.log("traveling from a to b");
+                        // console.log("traveling from a to b");
                         this.el.emit("a");
                         this.animTimeFrame = ["23", this.time23];
                         this.rotated = false;
                     } else if (!this.rotated) {
-                        console.log("changing to r1");
+                        // console.log("changing to r1");
                         this.el.emit("ar");
                         this.rotated = true;
                     }
@@ -212,15 +211,15 @@ AFRAME.registerComponent("trackanimation", {
                 break;
             case "23":
                 if (compareVectors(pos, this.points[1])) {
-                    console.log("arrived at b");
-                    console.log("comparing r to r2");
+                    // console.log("arrived at b");
+                    // console.log("comparing r to r2");
                     if (compareVectors(rot, this.rots[1])) {
-                        console.log("travelling from b to c");
+                        // console.log("travelling from b to c");
                         this.el.emit("b");
                         this.animTimeFrame = ["34", this.time34];
                         this.rotated = false;
                     } else if (!this.rotated) {
-                        console.log("changing to r2");
+                        // console.log("changing to r2");
                         this.el.emit("br");
                         this.rotated = true;
                     }
