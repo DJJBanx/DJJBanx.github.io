@@ -10,7 +10,8 @@ let objs = [
   ["redcar.obj", "redcar.mtl"],
   ["road.obj", "road.mtl"],
   ["Towers.obj", "Towers.mtl"],
-  ["SM_Elevator.obj", "SM_Elevator.mtl"]
+  ["SM_Elevator.obj", "SM_Elevator.mtl"],
+    ["dungeon.obj","dungeon.mtl"]
 ];
 
 //Enable everything

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Plank A-Frame</title>
+    <meta name="description" content="Plank Simulator">
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <!-- A-Frame Physics -->
+    <script src="https://github.com/ngokevin/aframe-physics-components/blob/master/dist/aframe-physics-components.min.js"></script>
+</head>
+<body>
+<a-scene>
+    <a-assets id="assets">
+        <img id="hell" src="images/hell-skybox.jpg"/>
+        <a-asset-item id="demon" src="./models/demonmodel.gltf"></a-asset-item>
+    </a-assets>
+    <script src="loadAssets.js"></script>
+
+    <!-- Camera -->
+    <a-entity id="camera-holder" position="-3.815 -0.981 2.142" rotation="0 -90 0">
+        <a-camera>
+            <a-cursor color="#FAFAFA" cursor="fuse: true; maxDistance: 800; timeout:1000" raycaster></a-cursor>
+        </a-camera>
+        <a-animation attribute="position"
+                     dur="8000"
+                     easing="linear"
+                     from="-3.815 -0.981 2.142"
+                     to="-0.848 -0.208 1.395"
+                     begin="move1">
+        </a-animation>
+        <a-animation attribute="position"
+                     dur="8000"
+                     easing="linear"
+                     from="-0.848 -0.208 1.395"
+                     to="-0.848 0.470 -3.201"
+                     begin="move2">
+        </a-animation>
+        <a-animation attribute="position"
+                     dur="8000"
+                     easing="linear"
+                     from="-0.848 0.470 -3.201"
+                     to="3.266 1.132 -3.051"
+                     begin="move3">
+        </a-animation>
+    </a-entity>
+
+    <!-- Skybox -->
+    <a-sky src="#hell"></a-sky>
+    <!-- Dungeon -->
+    <a-obj-model class="dungeon" src="#dungeonOBJ" mtl="#dungeonMTL" position="0 0 0"></a-obj-model>
+    <!-- Demon -->
+    <a-entity id="demon" gltf-model="#demon"
+              position="5.075 -22.30 8.95"
+              rotation="9.28 -50.27 11.99"
+              scale="20.0 20.0 20.0">
+    </a-entity>
+    <!-- Ambient Audio-->
+    <a-sound id="dungeon-ambient" src="src: url(./sounds/dungeon-ambient.mp3)" autoplay="true" loop="true" position="-3.815 -0.981 2.142"></a-sound>
+    <a-entity id="demon-laugh" sound="src: url(./sounds/demon-laught.mp3)"
+             position="-0.989 1.132 -3.05">
+    </a-entity>
+</a-scene>
+<script src="dungeon.js"></script>
+</body>
+</html>

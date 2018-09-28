@@ -11,7 +11,7 @@
     <script src="trackAnimation.js"></script>
 </head>
 <body>
-<a-scene physics-world="gravity: 0 -9.8 0">
+<a-scene>
     <!--Asset Loading, this needs to stay here-->
     <a-assets id="assets">
         <img id="clouds" src="images/clouds.jpg"/>
@@ -82,7 +82,7 @@
     <a-obj-model class="skyscraper" src="#TowersOBJ" mtl="#TowersMTL" position="-232.6 0 264.25"
                  rotation="0 180 0"></a-obj-model>
 
-    <!--Vehicles-->
+    <!--Vehicles -->
     <a-entity id="vehicles">
         <a-obj-model trackanimation="pointA:-356 2.338 174; pointB:384.5 2.338 174; pointC:384.5 2.338 110; pointD:-356 2.338 110;
                 rotA:0 90 0; rotB:0 180 0; rotC:0 -90 0; rotD:0 0 0;
@@ -106,7 +106,7 @@
     <!-- Audio -->
     <a-sound id="rooftop-audio" src="src: url(./sounds/rooftopSounds.mp3)" autoplay="true" loop="true"
              position="8.40 245.0 17.0"></a-sound>
-    <a-sound id="traffic-audio" src="src: url(./sounds/traffic.mp3)" autoplay="true" loop="loop"
+    <a-sound id="traffic-audio" src="src: url(./sounds/traffic.mp3)" autoplay="true" loop="true"
              position="0 0 0"></a-sound>
     <a-sound id="elevator-ding" src="src url(./sounds/elevator-ding.mp3)" position="5.32 245.7 -13.32"></a-sound>
 </a-scene>

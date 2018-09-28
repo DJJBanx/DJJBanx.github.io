@@ -4,6 +4,7 @@ const elevatorDoor = document.getElementById('sliding-door');
 const plank = document.getElementById('plank');
 const elevatorDing = document.getElementById('elevator-ding');
 let hasDied = false;
+let teleportToAfterLife = false;
 
 function openElevator() {
     document.querySelector("#sliding-door").emit("open", true);
@@ -19,6 +20,7 @@ function breakPlank() {
 }
 
 function fallToDeath() {
+    teleportToAfterLife = true;
     camera.emit("fall");
 }
 
@@ -31,6 +33,7 @@ elevatorDoor.addEventListener('animationend', function () {
 });
 
 camera.addEventListener('animationend', function() {
+    console.log("camera detected animation end");
     if(!hasDied) {
         breakPlank();
         // wait 3 seconds until you fall
@@ -38,5 +41,9 @@ camera.addEventListener('animationend', function() {
             fallToDeath();
         }, 2500);
         hasDied = true;
+    }
+    if (teleportToAfterLife){
+        console.log("Teleport");
+        window.location.href = "dungeon.html";
     }
 });
